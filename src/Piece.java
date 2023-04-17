@@ -1,4 +1,11 @@
 public class Piece {
-    private String color;
-    private Location location;
+    private char color;
+
+    public Piece(char col) {
+        this.color = col;
+    }
+
+    public char getColor() {
+        return color;
+    }
 }
