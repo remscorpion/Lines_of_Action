@@ -184,14 +184,15 @@ public class LinesOfActionBoard {
         return false;
     }
 
+    // find how many pairs has been connected
     public int findGroupSize(Pair here, boolean[][] visited) {
         int sum = 1;
         visited[here.getRow()][here.getColumn()] = true;
         char color = this.get(here);
-        Iterator var5 = directions.iterator();
+        Iterator i = directions.iterator();
 
-        while(var5.hasNext()) {
-            Pair direction = (Pair)var5.next();
+        while(i.hasNext()) {
+            Pair direction = (Pair)i.next();
             Pair neighbor = here.plus(direction);
             if (neighbor.isOnBoard() && this.get(neighbor) == color && !visited[neighbor.getRow()][neighbor.getColumn()]) {
                 sum += this.findGroupSize(neighbor, visited);
