@@ -43,7 +43,7 @@ public class Board {
 
     /**
      * Check all avail vertically movement
-     * @return
+     * @return a ArrayList that has all avail movements
      */
     public ArrayList<int[]> checkAvailVertically(int x, int y) {
         ArrayList<int[]> avail = new ArrayList<>();
@@ -58,11 +58,19 @@ public class Board {
     }
 
     /**
-     *
-     * @return
+     * Check all avail horizontally movement
+     * @return a ArrayList that has all avail movements
      */
     public ArrayList<int[]> checkAvailHorizontally(int x, int y) {
-        return null;
+        ArrayList<int[]> avail = new ArrayList<>();
+        int cont = 0;
+        for (int i = 0; i < 8; i++) {
+            if (board[y][i] != 0) cont++;
+        }
+        if (x + cont < 7) avail.add(new int[]{x + cont, y});
+        if (x - cont >= 0) avail.add(new int[]{x - cont, y});
+
+        return avail;
     }
 
     /**
@@ -70,6 +78,7 @@ public class Board {
      * @return
      */
     public ArrayList<int[]> checkAvailDiagonally(int x, int y) {
+
         return null;
     }
 }
