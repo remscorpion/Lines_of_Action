@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.*;
 
 public class LinesOfAction {
-    private LinesOfActionBoard board = new LinesOfActionBoard();
+    private Board board = new Board();
     /**
      * state
      * 0 selecting
