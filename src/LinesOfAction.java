@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.*;
 
 public class LinesOfAction {
@@ -45,6 +46,7 @@ public class LinesOfAction {
 
         int r = (int)Math.round(8.0 - y);
         int c = (int)Math.round(x);
+
         Pair here = new Pair(r, c);
         if (this.state == 0) {
             if (this.board.get(here) == this.board.getCurrentPlayer()) {
@@ -80,22 +82,31 @@ public class LinesOfAction {
     }
 
     public void drawMessage() {
-        StdDraw.setPenColor(StdDraw.WHITE);
-        String message = "Invalid state!";
-        if (this.state == 0) {
-            message = this.colorToName(this.board.getCurrentPlayer()) + ": select a piece to move";
-        } else if (this.state == 1) {
-            message = this.colorToName(this.board.getCurrentPlayer()) + ": select destination";
-        } else if (this.state == 2) {
-            char winner = this.board.findWinner();
-            if (winner == 't') {
-                message = "Tie!";
-            } else {
-                String str = this.colorToName(winner);
-                message = str + " wins!";
+        String message;
+        /*
+          state
+          0 selecting
+          1 moving
+          2 game over
+         */
+        switch (this.state) {
+            case 0 -> message = this.colorToName(this.board.getCurrentPlayer()) + ": select a piece to move";
+            case 1 -> message = this.colorToName(this.board.getCurrentPlayer()) + ": select destination";
+            case 2 -> {
+                char winner = this.board.findWinner();
+                if (winner == 't') {
+                    message = "Tie!";
+                } else {
+                    String str = this.colorToName(winner);
+                    message = str + " wins!";
+                }
             }
+            default -> message = "Invalid state!";
         }
 
+        StdDraw.setPenColor(StdDraw.WHITE);
+        Font font = new Font("Arial", Font.BOLD, 30);
+        StdDraw.setFont(font);
         StdDraw.text(3.5, 0.0, message);
     }
 
@@ -109,7 +120,7 @@ public class LinesOfAction {
                     StdDraw.setPenColor(StdDraw.GRAY);
                 }
 
-                // selecting
+                // Find the color of the background of the square
                 if (this.state == 1) {
                     Pair here = new Pair(r, c);
                     // selected square
