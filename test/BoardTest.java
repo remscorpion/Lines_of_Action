@@ -1,3 +1,9 @@
+/**
+ * @author TOMOHIRO & ED
+ * Still watting for ED's test functions
+ * But the game is good to play
+ */
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

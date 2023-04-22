@@ -1,3 +1,9 @@
+/**
+ * @author TOMOHIRO & ED
+ *  * Still watting for ED's test functions
+ *  * But the game is good to play
+ */
+
 import java.util.*;
 
 public class Pair {
