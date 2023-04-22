@@ -44,6 +44,7 @@ public class Board {
         this(".OOOOOO.\n#......#\n#......#\n#......#\n#......#\n#......#\n#......#\n.OOOOOO.\n");
     }
 
+
     public String toString() {
         String result = "";
 
